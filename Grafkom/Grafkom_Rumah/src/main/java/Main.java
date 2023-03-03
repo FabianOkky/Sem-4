@@ -92,7 +92,7 @@ public class Main {
 
                         )
                 ), new Vector4f(0.0f,0.0235f,0.7176f,1.0f),
-        Arrays.asList(0,1,2,1,2,3)
+                Arrays.asList(0,1,2,1,2,3)
 
         ));
 
@@ -236,7 +236,7 @@ public class Main {
                 new ArrayList<>(),
                 new Vector4f(1.0f,1.0f,0.0f,1.0f),
                 0.0f,0.0f,0.5f,0.5f
-                ));
+        ));
 //
         Segitiga.add(new Segitiga(
                 shader,
@@ -346,9 +346,7 @@ public class Main {
                         ("resources/shaders/scene.frag"
                                 , GL_FRAGMENT_SHADER)
         );
-        if(window.isKeyPressed(GLFW_KEY_W)){
-            System.out.println("W");
-        }
+
         if(window.getMouseInput().isLeftButtonPressed()){
             Vector2f pos = window.getMouseInput().getCurrentPos();
 //            System.out.println("x : "+ pos.x + " y : "+pos.y);
@@ -356,9 +354,6 @@ public class Main {
             pos.y = (pos.y - (window.getHeight())/2.0f)/(-window.getHeight()/2.0f);
             if((!(pos.x > 1 || pos.x < -0.97)&&!(pos.y >0.97 || pos.y < -1))){
                 System.out.println("x : "+ pos.x + " y : "+pos.y);
-
-
-
 
                 for (Kotak Kotak : KotakKhusus){
                     if (Kotak.contains(pos.x,pos.y)){
@@ -373,12 +368,12 @@ public class Main {
                     }
                 }
                 if(!found && DragKotak == null){
-                    KotakKhusus.add(new Kotak(shader,new ArrayList<>(List.of())
-                            ,new Vector4f(1.0f,0.0f,0.0f,1.0f),
-                            pos.x,pos.y,0.05,0.05));
+                    KotakKhusus.add(new Kotak(shader,new ArrayList<>(List.of()),new Vector4f(1.0f,0.0f,0.0f,1.0f), pos.x,pos.y,0.05,0.05));
                     objectsPointsControl.get(0).addVertices(new Vector3f(pos.x, pos.y,0));
                 }else if(DragKotak != null){
                     DragKotak.move(pos.x,pos.y);
+                    objectsPointsControl.get(0).addVertices(new Vector3f(pos.x, pos.y,0));
+                    System.out.println(objectsPointsControl.get(0));
                 }
 
 
