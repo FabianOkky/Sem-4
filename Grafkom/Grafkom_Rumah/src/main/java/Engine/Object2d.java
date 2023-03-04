@@ -155,8 +155,16 @@ public class Object2d extends ShaderProgram{
         return vertices;
     }
     public void move(double x, double y, int save){
-        vertices.set(save,new Vector3f((float)x,(float)y,0.f));
-        setupVAOVBO();
+            try{
+                vertices.set(save,new Vector3f((float)x,(float)y,0.f));
+                setupVAOVBO();
+            }catch (Exception e) {
+                save-=1;
+                System.out.println("salah");
+                vertices.set(save,new Vector3f((float)x,(float)y,0.f));
+                
+            }
+
 
     }
     public int  getIndex(float x, float y){
